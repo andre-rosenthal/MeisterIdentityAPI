@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using MeisterIdentity.Models;
+using MeisterIdentityAPI.Models;
 
-namespace MeisterIdentity.Common
+namespace MeisterIdentityAPI.Common
 {
     public class CommonController<CTR> : ControllerBase
     {

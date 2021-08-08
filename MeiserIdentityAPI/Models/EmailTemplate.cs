@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MeisterIdentity.Models
+namespace MeisterIdentityAPI.Models
 {
 	/// <summary>
 	/// email templates model

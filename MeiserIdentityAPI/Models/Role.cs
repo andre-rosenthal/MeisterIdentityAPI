@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace MeisterIdentity.Models
+namespace MeisterIdentityAPI.Models
 {
     /// <summary>
     /// public class Application user model

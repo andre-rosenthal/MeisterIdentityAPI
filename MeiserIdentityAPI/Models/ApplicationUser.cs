@@ -5,39 +5,45 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.SqlTypes;
 
-namespace MeisterIdentity.Models
+namespace MeisterIdentityAPI.Models
 {
-    public class ApplicationUser
+    public class ApplicationUser: IIdentityModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [HiddenInput(DisplayValue = false)]
         public string Id { get; set; }
+        [Required]
+        [StringLength(18, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
+        [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$")]
+        [DataType(DataType.Password)]
+        public string Password {  get; set; }
+        [Required]
+        [StringLength(18, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Display(Name = "User Name")]
         public string Name { get; set; }
-        public string RoleId { get; set; }
-        public string UserApplicationId { get; set; }
-        public string GroupId { get; set; }
-        public string TypeId { get; set; }
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        public string? RoleId { get; set; }
+        public string? UserApplicationId { get; set; }
+        public string? GroupId { get; set; }
+        public string? TypeId { get; set; }
         public string? SapUserId { get; set; }
+        [DataType(DataType.Password)]
+        [Display(Name = "SAP User Password")]
+        public string? SapUserPassword { get; set; }
         public string? SapConnectionId { get; set; }
-        public string Company { get; set; }
-        public DateTime ValidFrom { get; set; }
-        public DateTime ValidTo { get; set; }
-        public string SalesGroup { get; set; }
-        public string Ein { get; set; }
-        public string SalesOrg { get; set; }
-        public string SaleChannel { get; set; }
+        public string? Company { get; set; }
+        public DateTime? ValidFrom { get; set; }
+        public DateTime? ValidTo { get; set; }
         public ApplicationUser()
         {
             this.Company = string.Empty;
-            this.Ein = string.Empty;
-            this.SaleChannel = string.Empty;
-            this.SalesGroup = string.Empty;
-            this.SalesOrg = string.Empty;
             this.ValidFrom = (DateTime)SqlDateTime.MinValue;
             this.ValidTo = (DateTime)SqlDateTime.MaxValue;
         }
-        public ApplicationUser(string RoleId, string UserApplicationId, string groupdId, string typeId, string? sapUserId, string? connectionId, DateTime validFrom, DateTime validTo, string company, string ein, string salesGroup, string salesOrg, string salesChannel)
+        public ApplicationUser(string RoleId, string UserApplicationId, string groupdId, string typeId, string? sapUserId, string? connectionId, DateTime validFrom, DateTime validTo, string company)
         {
             this.RoleId = RoleId;
             this.GroupId = groupdId;
@@ -50,19 +56,15 @@ namespace MeisterIdentity.Models
                 this.ValidFrom = (DateTime)SqlDateTime.MinValue;
             else
                 this.ValidFrom = validFrom;
-            this.Ein = ein;
             if (validTo == DateTime.MaxValue)
                 this.ValidTo = (DateTime)SqlDateTime.MaxValue;
             else
                 this.ValidTo = validTo;
-            this.SalesOrg = salesGroup;
-            this.SalesOrg = salesOrg;
-            this.SaleChannel = salesChannel;
-        }
-        public ApplicationUser(Guid roleId, Guid UserApplicationId, Guid groupdId, Guid typeId, Guid? sapUserId, Guid? connectionId, string company, string ein,string salesGroup,string salesOrg, string salesChannel): this(roleId,UserApplicationId,groupdId,typeId,sapUserId,connectionId,DateTime.MinValue,DateTime.MaxValue,company,ein,salesGroup,salesOrg,salesChannel)
+      }
+        public ApplicationUser(Guid roleId, Guid UserApplicationId, Guid groupdId, Guid typeId, Guid? sapUserId, Guid? connectionId, string company): this(roleId,UserApplicationId,groupdId,typeId,sapUserId,connectionId,DateTime.MinValue,DateTime.MaxValue,company)
         {
         }
-        public ApplicationUser(Guid RoleId, Guid UserApplicationId, Guid groupdId, Guid typeId, Guid? sapUserId, Guid? connectionId, DateTime validFrom, DateTime validTo,string company,string ein, string salesGroup,string salesOrg,string salesChannel)
+        public ApplicationUser(Guid RoleId, Guid UserApplicationId, Guid groupdId, Guid typeId, Guid? sapUserId, Guid? connectionId, DateTime validFrom, DateTime validTo,string company)
         {
             this.RoleId = RoleId.ToString();
             this.GroupId = groupdId.ToString();
@@ -72,11 +74,7 @@ namespace MeisterIdentity.Models
             this.SapConnectionId = connectionId.ToString();
             this.Company = company;
             this.ValidFrom = validFrom;
-            this.Ein = ein;
             this.ValidTo = validTo;
-            this.SalesOrg = salesGroup;
-            this.SalesOrg = salesOrg;
-            this.SaleChannel = salesChannel;
         }
     }
 }

@@ -2,8 +2,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
-using MeisterIdentity.Common;
-namespace MeisterIdentity.Models
+using MeisterIdentityAPI.Common;
+namespace MeisterIdentityAPI.Models
 {
 	/// <summary>
 	/// Aplication User Type model

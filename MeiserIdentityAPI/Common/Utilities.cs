@@ -8,9 +8,9 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
-using MeisterIdentity.Models;
+using MeisterIdentityAPI.Models;
 
-namespace MeisterIdentity.Common
+namespace MeisterIdentityAPI.Common
 {
     public static class Utilities
     {

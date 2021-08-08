@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace MeisterIdentity.Data.Migrations
+namespace MeisterIdentityAPI.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
