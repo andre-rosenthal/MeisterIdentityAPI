@@ -1,6 +1,6 @@
 using System;
 
-namespace MeiserIdentityAPI.Models
+namespace MeisterIdentity.Models
 {
     public class ErrorViewModel
     {

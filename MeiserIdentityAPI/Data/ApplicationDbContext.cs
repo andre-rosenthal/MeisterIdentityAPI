@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MeiserIdentityAPI.Data
+namespace MeisterIdentity.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

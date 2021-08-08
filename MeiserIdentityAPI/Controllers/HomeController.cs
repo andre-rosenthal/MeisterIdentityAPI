@@ -1,4 +1,4 @@
-﻿using MeiserIdentityAPI.Models;
+﻿using MeisterIdentity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MeiserIdentityAPI.Controllers
+namespace MeisterIdentity.Controllers
 {
     public class HomeController : Controller
     {
