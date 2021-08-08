@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MeisterIdentityAPI.Data;
 using MeisterIdentityAPI.Models;
+using MeisterIdentityAPI.Common;
 
 namespace MeisterIdentityAPI.Controllers
 {
@@ -56,6 +57,7 @@ namespace MeisterIdentityAPI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Code")] Application application)
         {
+            Utilities.ValidateId<Application, ApplicationsController>(ref application, this);
             if (ModelState.IsValid)
             {
                 _context.Add(application);

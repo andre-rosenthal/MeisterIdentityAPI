@@ -12,7 +12,7 @@ namespace MeisterIdentityAPI.Models
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		[HiddenInput(DisplayValue = false)]
+		[Editable(false)]
 		public string Id { get; set; }
 		public string Name { get; set; }
 		public string Code { get; set; }
